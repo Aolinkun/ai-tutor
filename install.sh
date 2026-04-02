@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# Bloom Mastery Tutor · 一键安装脚本
-REPO="Aolinkun/bloom-mastery-tutor"
-SKILL_NAME="bloom-mastery-tutor"
+# AI Tutor · 一键安装脚本
+REPO="Aolinkun/ai-tutor"
+SKILL_NAME="ai-tutor"
 INSTALL_DIR="$HOME/.claude/skills/$SKILL_NAME"
 
 set -e
 
-echo "🎓 正在安装 Bloom Mastery Tutor..."
+echo "🎓 正在安装 AI Tutor..."
 
 mkdir -p "$INSTALL_DIR/references"
 
@@ -19,4 +19,4 @@ curl -fsSL "$BASE_URL/references/difficulty-levels.md" -o "$INSTALL_DIR/referenc
 
 echo ""
 echo "✅ 安装完成！路径：$INSTALL_DIR"
-echo "在 Claude Code 中说「帮我学 XXX」即可使用"
+echo "在 Claude Code 中说「我想学 XXX」即可使用"
