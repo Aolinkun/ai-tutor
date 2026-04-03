@@ -1,88 +1,86 @@
-# AI Tutor
+# AI Tutor · 苏格拉底学习导师
 
-A Socratic learning skill for Claude Code, based on Bloom's Two Sigma research.
+基于 Benjamin Bloom 的 **Two Sigma 掌握学习法**，让 Claude Code 变成你的专属一对一导师。
 
-Instead of explaining things to you, it asks you questions — adapting difficulty in real time based on your answers. Learning progress is saved to files so it persists across sessions.
+AI 不给你讲解——而是主动向你提问，根据你的回答实时调整难度。学习进度存成文件，跨对话不丢失。
 
 ---
 
-## Install
+## 一键安装
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/Aolinkun/ai-tutor/main/install.sh | bash
 ```
 
-Requires: Claude Code, macOS/Linux
+需要：Claude Code，macOS / Linux
 
 ---
 
-## Usage
+## 使用方法
 
-In any Claude Code session:
+在 Claude Code 里直接说：
 
 ```
 我想学维特根斯坦的逻辑哲学论
 我想学 Rust 的所有权系统
-我想学抖音  ← Claude will ask what you actually want to solve first
-继续学维特根斯坦  ← resumes from last session
+我想学抖音运营       ← Claude 会先问你想解决什么具体问题
+继续学维特根斯坦     ← 从上次进度继续
 ```
 
-Claude will clarify vague topics, run a diagnostic to find your knowledge boundary, then generate learning units that adapt to your level.
+---
 
-Progress is saved to `./learning/[topic]/` in your project directory.
+## 核心机制
+
+研究表明：一对一辅导 + 掌握学习法，可让学生超越 98% 的同龄人（Bloom, 1984）。
+
+这个 Skill 的关键行为：
+
+- **先澄清主题** — 「我想学抖音」→ 先问你想解决什么问题 → 收窄成精准主题
+- **诊断再教学** — 2-3 个问题找到你真实的知识边界，不瞎教
+- **掌握才推进** — 正确率 ≥ 80% 才进下一阶段，答错了退回巩固
+- **三级提示** — 卡住说「提示」，分三级给线索，不直接给答案
+- **情绪感知** — 连续答错时自动降难度、换方式，不机械扣分
+- **每5单元复习** — 间隔重复，防止遗忘
+- **上下文压缩** — 每3单元把关键信息存入文件，长对话不崩
+- **跨主题关联** — 学新概念时主动关联你学过的其他主题
 
 ---
 
-## How it works
+## 文件结构
 
-Based on Benjamin Bloom's 1984 finding that one-on-one tutoring + mastery learning produces 2 sigma improvement over classroom instruction (outperforming 98% of students).
-
-Key behaviors:
-- **Clarifies topic first** — "I want to learn TikTok" → asks what problem you're solving → narrows to precise topic
-- **Diagnoses before teaching** — 2-3 questions to find your actual knowledge boundary
-- **Mastery gating** — moves forward only when ≥80% correct, backs up when stuck
-- **Tiered hints** — 3 levels of hints before giving away the answer
-- **Spaced review** — review unit every 5 units
-- **Emotion-aware** — detects frustration, slows down, switches approach
-- **Context compression** — saves key info to file every 3 units to survive long sessions
-- **Cross-topic linking** — notices when new concepts relate to things you've learned before
-
----
-
-## File structure
-
+安装位置：
 ```
 ~/.claude/skills/ai-tutor/
-├── SKILL.md                        # Main skill file
+├── SKILL.md
 └── references/
-    ├── theory.md                   # Bloom Two Sigma background
-    └── difficulty-levels.md        # Difficulty scaling by subject
+    ├── theory.md               # Bloom Two Sigma 理论背景
+    └── difficulty-levels.md    # 各学科难度层级参考
 ```
 
-Learning progress (per project):
+学习进度（存在你的项目目录）：
 ```
 ./learning/
-└── [topic]/
-    ├── progress.md                 # State, weak points, compressed history
-    ├── unit-01-[title].md
-    ├── unit-02-[title].md
-    └── summary.md                  # Generated on completion
+└── [主题名称]/
+    ├── progress.md             # 进度、薄弱点、关键知识压缩
+    ├── unit-01-[标题].md
+    ├── unit-02-[标题].md
+    └── summary.md              # 结课后自动生成
 ```
 
 ---
 
-## Version
+## 版本记录
 
-Current: **v1.3.0**
+当前版本：**v1.3.0**
 
-| Version | Changes |
-|---------|---------|
-| v1.3.0 | Topic clarification step — vague topics get narrowed before teaching starts |
-| v1.2.0 | Tiered hints, error correction methods, emotion sensing, context compression, cross-topic linking |
-| v1.1.0 | Resume from last session, spaced review, graduation criteria |
-| v1.0.0 | Initial release |
+| 版本 | 更新内容 |
+|------|---------|
+| v1.3.0 | 新增主题澄清步骤，模糊主题先收窄再教学 |
+| v1.2.0 | 三级提示、四种纠错方式、情绪感知、上下文压缩、跨主题关联 |
+| v1.1.0 | 续学机制、间隔复习、结课判断 |
+| v1.0.0 | 初始版本 |
 
-To verify your installed version:
+验证已安装版本：
 ```bash
 grep "^# Version" ~/.claude/skills/ai-tutor/SKILL.md
 ```
