@@ -1,56 +1,93 @@
-# 🎓 AI Tutor · 苏格拉底学习导师
+# AI Tutor
 
-基于 Benjamin Bloom 的 **Two Sigma 掌握学习法**，让 Claude 变成你的专属一对一导师。
+A Socratic learning skill for Claude Code, based on Bloom's Two Sigma research.
 
-> 研究表明：一对一辅导 + 掌握学习法，可让学生超越 98% 的同龄人。  
-> 现在用 AI，人人都能用上这种学习方式。
+Instead of explaining things to you, it asks you questions — adapting difficulty in real time based on your answers. Learning progress is saved to files so it persists across sessions.
 
-## ⚡ 一键安装
+---
+
+## Install
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/Aolinkun/ai-tutor/main/install.sh | bash
 ```
 
-## 🚀 使用方法
+Requires: Claude Code, macOS/Linux
 
-安装后，在 Claude Code 中说：
+---
+
+## Usage
+
+In any Claude Code session:
 
 ```
 我想学维特根斯坦的逻辑哲学论
-我想学傅里叶变换
 我想学 Rust 的所有权系统
+我想学抖音  ← Claude will ask what you actually want to solve first
+继续学维特根斯坦  ← resumes from last session
 ```
 
-Claude 会自动启动苏格拉底式导师模式，主动提问、实时调整难度，并在当前目录创建学习文件记录进度。
+Claude will clarify vague topics, run a diagnostic to find your knowledge boundary, then generate learning units that adapt to your level.
 
-## 🧠 这个技能做什么？
+Progress is saved to `./learning/[topic]/` in your project directory.
 
-- **AI 主动提问**，而不是被动回答你——这才是高效学习的正确机制
-- **根据你的回答实时调整难度**，正确率 ≥ 80% 才推进下一阶段
-- **学习记录存成文件**，在 Claude Code 中跨对话持久保存进度
-- 支持任何学科：哲学、编程、数学、历史……
+---
 
-## 📁 文件结构
+## How it works
+
+Based on Benjamin Bloom's 1984 finding that one-on-one tutoring + mastery learning produces 2 sigma improvement over classroom instruction (outperforming 98% of students).
+
+Key behaviors:
+- **Clarifies topic first** — "I want to learn TikTok" → asks what problem you're solving → narrows to precise topic
+- **Diagnoses before teaching** — 2-3 questions to find your actual knowledge boundary
+- **Mastery gating** — moves forward only when ≥80% correct, backs up when stuck
+- **Tiered hints** — 3 levels of hints before giving away the answer
+- **Spaced review** — review unit every 5 units
+- **Emotion-aware** — detects frustration, slows down, switches approach
+- **Context compression** — saves key info to file every 3 units to survive long sessions
+- **Cross-topic linking** — notices when new concepts relate to things you've learned before
+
+---
+
+## File structure
 
 ```
-bloom-mastery-tutor/
-├── SKILL.md                        # 主技能文件
+~/.claude/skills/ai-tutor/
+├── SKILL.md                        # Main skill file
 └── references/
-    ├── theory.md                   # Bloom Two Sigma 理论背景
-    └── difficulty-levels.md        # 各学科难度层级参考
+    ├── theory.md                   # Bloom Two Sigma background
+    └── difficulty-levels.md        # Difficulty scaling by subject
 ```
 
-## 📖 理论背景
+Learning progress (per project):
+```
+./learning/
+└── [topic]/
+    ├── progress.md                 # State, weak points, compressed history
+    ├── unit-01-[title].md
+    ├── unit-02-[title].md
+    └── summary.md                  # Generated on completion
+```
 
-Benjamin Bloom（1984）在《The 2 Sigma Problem》中发现：
+---
 
-| 学习方式 | 效果 |
-|---------|------|
-| 传统课堂（1对30） | 基准 |
-| 掌握学习法 | 超越 84% 的学生（+1σ） |
-| 一对一辅导 + 掌握学习法 | 超越 **98%** 的学生（+2σ） |
+## Version
 
-AI 是人类历史上第一次能以极低成本大规模复制这种体验的技术。
+Current: **v1.3.0**
+
+| Version | Changes |
+|---------|---------|
+| v1.3.0 | Topic clarification step — vague topics get narrowed before teaching starts |
+| v1.2.0 | Tiered hints, error correction methods, emotion sensing, context compression, cross-topic linking |
+| v1.1.0 | Resume from last session, spaced review, graduation criteria |
+| v1.0.0 | Initial release |
+
+To verify your installed version:
+```bash
+grep "^# Version" ~/.claude/skills/ai-tutor/SKILL.md
+```
+
+---
 
 ## License
 
