@@ -1,0 +1,22 @@
+{
+  "id": "assessment-id",
+  "course_id": "new-course",
+  "concept_id": "concept-id",
+  "occurred_at": "2000-01-01T00:00:00Z",
+  "kind": "immediate",
+  "task": "替换为实际题目与关键标准",
+  "answer_excerpt": "替换为真实作答的关键片段，不能纠正后冒充原答",
+  "evidence_source": "observed_response",
+  "source_ref": "本次可见学习对话中的题目与回答",
+  "scores": {"accuracy": 0, "reasoning": 0, "transfer": 0, "independence": 0},
+  "hint_level": 0,
+  "scaffold_level": "L0",
+  "answer_revealed": false,
+  "critical_error": false,
+  "aligned": false,
+  "success_criteria_met": false,
+  "new_context": null,
+  "prior_assessment_id": null,
+  "feedback": "替换为基于真实证据的反馈",
+  "result": "not_passed"
+}

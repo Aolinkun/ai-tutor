@@ -1,0 +1,30 @@
+{
+  "schema_version": 3,
+  "skill_version": "5",
+  "course_id": "new-course",
+  "created_at": "2000-01-01T00:00:00Z",
+  "updated_at": "2000-01-01T00:00:00Z",
+  "topic": {"title": "新学习主题", "slug": "new-course", "scope": ""},
+  "goal": {"purpose": "", "observable_outcome": "", "success_criteria": [], "time_constraints": ""},
+  "mode": "learn",
+  "activity": "intake",
+  "storage_mode": "off",
+  "storage_consent": {"source": "none", "progress_authorized_at": null, "full_authorized_at": null},
+  "current_unit": null,
+  "curriculum": [],
+  "mastery": {},
+  "weak_points": [],
+  "review_queue": [],
+  "task": null,
+  "checkpoint": {
+    "resume_activity": "intake",
+    "task_prompt": "",
+    "response_so_far": "",
+    "response_status": "none",
+    "pending_question": "",
+    "hint_level": 0,
+    "scaffold_level": "L0",
+    "next_action": "根据用户当前目标开始"
+  },
+  "insight_capture": {"enabled": false, "authorized_at": null}
+}

@@ -1,0 +1,11 @@
+{
+  "id": "insight-id",
+  "course_id": "new-course",
+  "occurred_at": "2000-01-01T00:00:00Z",
+  "kind": "self_report",
+  "summary": "用户自述；替换为保留原意、条件和不确定性的提炼",
+  "source": {"kind": "user", "reference": "替换为可追溯的会话或材料位置", "time": "2000-01-01T00:00:00Z"},
+  "conditions": "",
+  "uncertainty": "尚未独立核验",
+  "evidence_refs": []
+}

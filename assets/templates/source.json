@@ -1,0 +1,18 @@
+{
+  "id": "source-id",
+  "course_id": "new-course",
+  "title": "替换为资料标题",
+  "author_or_institution": "替换为作者或发布机构",
+  "source_type": "official_standard",
+  "publication_or_version": "",
+  "effective_or_data_period": "",
+  "retrieved_at": "2000-01-01T00:00:00Z",
+  "location": "替换为直接 URL、本地路径或稳定标识",
+  "relevant_section": "",
+  "used_for": [],
+  "use_status": "supporting",
+  "supports": "替换为该资料实际支持的知识或结论",
+  "authority_basis": "替换为它为何适合支持该内容",
+  "limitations": "",
+  "supersedes": null
+}

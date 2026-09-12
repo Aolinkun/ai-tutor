@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Testing
+.pytest_cache/
+*.cover
+.coverage
+htmlcov/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.bak
+.tutor-write.lock
+
+# Local data (should be in user's data root, not repo)
+学习记录_sessions/
+学习资料_units/
+*.jsonl
+学习进度_progress.md
+学习地图_curriculum.md
+学习总结_summary.md
+
+# Backup files
+*.tar.gz
+*_备份_*.tar.gz
+
+# Reports (optional - remove this line if you want to commit reports)
+*_修复报告_*.md
+*_评估_*.md
